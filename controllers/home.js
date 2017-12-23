@@ -14,7 +14,7 @@ router.get('/', function(request, response, next){
 });
 
 router.get('/', function(request, response){
-	response.render('home/index');
+	response.render('admin/home');
 });
 
 

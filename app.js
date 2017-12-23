@@ -12,6 +12,8 @@ var login = require('./controllers/login');
 var register = require('./controllers/register');
 var logout = require('./controllers/logout');
 var home = require('./controllers/home');
+var userlist = require('./controllers/userlist');
+
 var category = require('./controllers/category');
 
 // CONFIGURATION
@@ -28,6 +30,9 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/logout', logout);
 app.use('/home', home);
+app.use('/userlist', userlist);
+
+
 app.use('/category', category);
 
 app.get('/', function(req, res){
