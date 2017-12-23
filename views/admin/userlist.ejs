@@ -9,6 +9,13 @@
 		</td>
 	</tr>
 	<tr>
+		<td align="center">
+			<% if(messages.info)
+			 	{ %> <p style="color:green;"> <%= messages.info %> </p> <%} 
+	 		%>
+		</td>
+	</tr>
+	<tr>
 		<td>
 			<form method="post">
 				<label>Search by Name : </label>

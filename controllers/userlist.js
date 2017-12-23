@@ -50,14 +50,15 @@ router.get('/', function(request, response){
 // });
 
 
-// router.get('/delete/:id', function(request, response){
-// 	var catid = request.params.id;
-// 	console.log(catid);
-// 	categoryModel.delete(catid, function(category){
-// 		response.redirect('/category');
-// 	});
+router.get('/delete/:id', function(request, response){
+	var userId = request.params.id;
+	console.log(userId);
+	userlistModel.delete(userId, function(category){
+		request.flash('info',"Deleted Successfully");
+		response.redirect('/userlist');
+	});
 	
-// });
+});
 
 router.get('/edit/:id', function(request, response){
 	var userId = request.params.id;
@@ -72,17 +73,14 @@ router.post('/edit/:id', function(request, response){
 		userId: request.body.userId,
 		type: request.body.type
 	};
-
-	console.log('userlist',user);
-	
 	userlistModel.update(user, function(success){
 		if(success)
-		{
+		{	request.flash('info',"User Type Upadated Successfully");
 			response.redirect('/userlist');
 		}
 		else
 		{
-			response.send('Error inserting data');
+			response.send('Error Upadating data');
 		}
 	});
 	

@@ -14,12 +14,12 @@ module.exports = {
 			callback(result[0]);
 		});
 	},
-	// delete: function(catid, callback){
-	// 	var sql = "DELETE FROM categories WHERE id =?";
-	// 	db.executeGetId(sql, [catid], function(flag){
-	// 		callback(flag);
-	// 	});
-	// },
+	delete: function(userId, callback){
+		var sql = "DELETE FROM users WHERE userId =?";
+		db.executeGetId(sql, [userId], function(flag){
+			callback(flag);
+		});
+	},
 	// insert: function(category, callback){
 	// 	var sql = "INSERT INTO categories(name,description) VALUES (?, ?)";
 	// 	db.executeGetId(sql, [category.name, category.description], function(id){
@@ -37,7 +37,6 @@ module.exports = {
 		var sql = "UPDATE users SET type=? WHERE userId=?";
 		db.execute(sql, [user.type, user.userId], function(flag){
 			callback(flag);
-			console.log('userlist-model',flag);
 		});
 	}
 };
