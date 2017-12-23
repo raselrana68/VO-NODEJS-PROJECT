@@ -1,20 +1,22 @@
-@extends('layouts.admin.master')
-
-@section('main-content')
-
-
-   @if(Session::has('message'))
-	   <span style="color:red">{{ Session::get('message') }}</span>
-	@endif
-	
-	<h3>Change Password</h3>
-	<form method="post" action="{{ route('updateSetting',$userInfo->userId) }}">
-	  {{ csrf_field() }}
+<% include header %>
+<table align="center">
+	<tr>
+		<td align="center">
+			<h2>Change Password</h2>
+			<hr>
+		</td>
+	</tr>
+		<tr>
+		<td align="center">
+			<% if(messages.info)
+			 	{ %> <p style="color:green;"> <%= messages.info %> </p> <%} 
+	 		%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form method="post" >
 			<table>
-				<tr>
-					<td>USERNAME: </td>
-					<td>{{ $userInfo->username }}</td>
-				</tr>
 				<tr>
 					<td>OLD PASSWORD: </td>
 					<td><input type="password" name="oldPassword"></td>
@@ -31,19 +33,13 @@
 					<td colspan="2">
 						<br/>
 						<center>
-							<a href="{{ route('adminHome') }}">Back</a> | 
+							<a href="/home">Back</a> | 
 							<input type="submit" value="Update Password">
 						</center>
 					</td>
 				</tr>
 			</table>
 		</form>
-		<br/>
-		<br/>
-		 @if(count($errors) > 0)
-		    @foreach($errors->all() as $error)
-		       <label style="color: red;">{{ $error }}</label><br>
-		    @endforeach
-		 @endif
-
-@endsection
+		</td>
+	</tr>
+</table>

@@ -1,59 +1,51 @@
-@extends('layouts.admin.master')
-
-@section('main-content')
-   <h3>Edit Event Information</h3>
-		<form method="post" action="{{ route('event.update',$eventall->eventId) }}">
-			{{ csrf_field() }}
-			 <input type="hidden" name="_method" value="PUT">
-				
+<% include header%>
+<table border="0" align="center">
+	<tr>
+		<td>
+			<h2>Edit Event Information</h2>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form method="post">
+			<input type="hidden" name="eventId" value="<%= eventId %>">
 				<table>
 					<tr>
 						<td>Event Name: </td>
-						<td><input type="text" name="eventname" value="{{ $eventall->eventname }}"></td>
+						<td><input type="text" name="eventname" value="<%= eventname %>"></td>
 					</tr>
 					<tr>
 						<td>Event Date: </td>
-						<td><input type="Date" name="eventdate" value="{{ $eventall->eventdate }}"></td>
+						<td><input type="date" name="eventdate" value="<%= eventdate %>"></td>
 					</tr>
 					<tr>
-						<td>Event Date: </td>
-						<td><input type="text" name="venue" value="{{ $eventall->venue }}"></td>
+						<td>Event Venue: </td>
+						<td><input type="text" name="venue" value="<%= venue %>"></td>
 					</tr>
 					<tr>
 						<td>Event Details: </td>
-						<td><input type="text" name="eventdetails" value="{{ $eventall->eventdetails }} "></td>
+						<td><input type="text" name="eventdetails" value="<%=eventdetails%>"></td>
 					</tr>
 					<tr>
-						<td>Status: </td>
+						<td>STATUS: </td>
 						<td>
 							<select name="status">
-								<option @if($eventall->status == 'Pending') {{ 'selected' }} @endif >Pending</option>
-								<option @if($eventall->status == 'Completed') 
+								
+								<option @if("<%= status %>"== 'Pending') 
+								 {{ 'selected' }}  @endif>Pending</option>
+								 <option @if("<%= status %>"== 'Completed') 
 								 {{ 'selected' }}  @endif>Completed</option>
-								<option @if($eventall->status == 'Canceled') 
+								  <option @if("<%= status %>"== 'Canceled') 
 								 {{ 'selected' }}  @endif>Canceled</option>
 							</select>
 						</td>
-				    </tr>
+					</tr>
 					<tr>
-						<td colspan="2">
-							<br/>
-							<center>
-								<a href="{{ route('eventlist',$eventall->eventId) }}">Back</a> | 
-								<input type="submit" value="Update">
-							</center>
-						</td>
+						<td></td>
+						<td><input type="submit" value="Update"></td>
 					</tr>
 				</table>
 			</form>
-			<br/>
-			<br/>
-			 @if(count($errors) > 0)
-			    @foreach($errors->all() as $error)
-			       <label style="color:red; ">{{ $error }}</label>
-			    @endforeach
-			 @endif
-			 @if(Session::has('Error'))
-				<label style="color:red;">{{ Session::get('Error') }}</label>
-		     @endif
-@endsection
+		</td>
+	</tr>
+</table>

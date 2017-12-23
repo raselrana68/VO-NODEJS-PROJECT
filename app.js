@@ -13,6 +13,8 @@ var register = require('./controllers/register');
 var logout = require('./controllers/logout');
 var home = require('./controllers/home');
 var userlist = require('./controllers/userlist');
+var events = require('./controllers/events');
+var setting = require('./controllers/setting');
 
 var category = require('./controllers/category');
 
@@ -31,7 +33,8 @@ app.use('/register', register);
 app.use('/logout', logout);
 app.use('/home', home);
 app.use('/userlist', userlist);
-
+app.use('/events', events);
+app.use('/setting', setting);
 
 app.use('/category', category);
 

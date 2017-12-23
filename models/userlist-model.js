@@ -10,7 +10,6 @@ module.exports = {
 	get: function(userId, callback){
 		var sql = "SELECT * FROM users WHERE userId=?";
 		db.getResult(sql, [userId], function(result){
-			console.log(result);
 			callback(result[0]);
 		});
 	},
@@ -20,19 +19,19 @@ module.exports = {
 			callback(flag);
 		});
 	},
-	// insert: function(category, callback){
-	// 	var sql = "INSERT INTO categories(name,description) VALUES (?, ?)";
-	// 	db.executeGetId(sql, [category.name, category.description], function(id){
-	// 		if(id <= 0)
-	// 		{
-	// 			callback(false);
-	// 		}
-	// 		else
-	// 		{
-	// 			callback(true);
-	// 		}
-	// 	});
-	// },
+	insert: function(user, callback){
+		var sql = "INSERT INTO users(username,password) VALUES (?, ?)";
+		db.executeGetId(sql, [user.username, user.username,user.fullname], function(id){
+			if(id <= 0)
+			{
+				callback(false);
+			}
+			else
+			{
+				callback(true);
+			}
+		});
+	},
 	update: function(user, callback){
 		var sql = "UPDATE users SET type=? WHERE userId=?";
 		db.execute(sql, [user.type, user.userId], function(flag){

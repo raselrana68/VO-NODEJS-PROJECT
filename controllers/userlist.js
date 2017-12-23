@@ -23,36 +23,35 @@ router.get('/', function(request, response){
 	
 });
 
-// router.get('/create', function(request, response){
-// 	var title = "This is title";
-// 	response.render('category/create',{title:title});
+router.get('/create', function(request, response){
+	response.render('admin/addvolunteer');
 	
-// });
+});
 
-// router.post('/create', function(request, response){
-// 	var cat = {
-// 		name: request.body.catname,
-// 		description: request.body.desc
-// 	};
+router.post('/create', function(request, response){
+	var user = {
+		fullname: request.body.fullname,
+		username: request.body.username,
+		email: request.body.email
+	};
 	
-// 	categoryModel.insert(cat, function(success){
-// 		if(success)
-// 		{
-// 			request.flash('info',"Category Added Successfully");
-// 			response.redirect('/category');
-// 		}
-// 		else
-// 		{
-// 			response.send('Error inserting data');
-// 		}
-// 	});
+	userlistModel.insert(user, function(success){
+		if(success)
+		{
+			request.flash('info',"User Added Successfully");
+			response.redirect('/userlist');
+		}
+		else
+		{
+			response.send('Error inserting data');
+		}
+	});
 	
-// });
+});
 
 
 router.get('/delete/:id', function(request, response){
 	var userId = request.params.id;
-	console.log(userId);
 	userlistModel.delete(userId, function(category){
 		request.flash('info',"Deleted Successfully");
 		response.redirect('/userlist');
