@@ -24,19 +24,20 @@ router.post('/update', function(request, response){
 		newPassword:request.body.newPassword,
 		retypePassword:request.body.retypePassword
 	};
-	settingModel.update(user, function(success){
-		if(success)
-		{	request.flash('info'," Password Updated Successfully");
-			response.redirect('/setting/update');
-		}
-		else
-		{
-			response.send('Error inserting data');
-		}
+	settingModel.check(user, function(result){
+			console.log('DATABASE:',result);
+			console.log('TextBox: ',user.oldPassword);
+
+			if (result!=request.body.oldPassword) 
+				{
+					console.log('Not Equal');
+				}
+			else
+			  	{
+					console.log(' Equal');
+				}
 	});
 	
 });
-
-
 
 module.exports = router;

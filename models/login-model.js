@@ -6,11 +6,11 @@ module.exports = {
 		db.getResult(sql, [user.username, user.password], function(result){
 			if(result.length > 0)
 			{
-				callback(true);
+				callback(result[0]);
 			}
 			else
 			{
-				callback(false);
+				callback(0);
 			}
 		});
 	}

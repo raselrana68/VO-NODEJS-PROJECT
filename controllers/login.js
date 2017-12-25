@@ -14,16 +14,23 @@ router.post('/', function(request, response){
 		password: request.body.password
 	};
 
-	loginModel.validate(user, function(valid){
-		if(valid)
-		{
-			request.session.loggedUsername = request.body.username;
-			response.redirect('/home');
-		}
+	loginModel.validate(user, function(result){
+		if(result)
+			{
+				if(result.type=='Admin')
+					{
+						request.session.loggedUsername = request.body.username;
+						response.redirect('/adminHome');
+					}
+				else
+					{request.session.loggedUsername = request.body.username;
+					response.redirect('/userHome');
+					}
+			}
 		else
-		{
-			response.redirect('/login');
-		}
+				{
+					response.redirect('/login');
+				}
 	});
 });
 

@@ -23,29 +23,15 @@
 		<tr>
 			<td width="100"></td>
 			<td align="center">
-				<a href="{{ route('userHome') }}">Home</a> | 
-				<a href="{{ route('user.show', Session()->get('userId') ) }}">Profile</a> | 
-			    <a href="{{ route('usereventlist',Session()->get('userId')) }}">Events</a> |
-				<a href="{{ route('settings.edit', Session()->get('userId')) }}">Settings</a> | 
-				<a href="{{ route('contact')}}">Contact</a> | 
-
-				<a href="{{ route('logout') }}">Logout</a>
-
+				<a href='/userHome'>Home</a> |
+				<a href='/userHome/profile'>Profile</a> |
+				<a href="#">Events</a> |
+				<a href="#">Settings</a> |
+				<a href="#">Contact</a> |
+				<a href="/Logout">Logout</a>
 			</td>
 			<td width="100"></td>
-		</tr>
-		<tr>
-			<td width="100"></td>
-			<td>
-				<br/>
-				<center>
-
-				  @yield('main-content') <!-- main content show here -->
-
-				</center>
-			</td>
-			<td width="100"></td>
-		</tr>
-	</table>
-</body>
+			</tr>
+		</table>
+	</body>
 </html>

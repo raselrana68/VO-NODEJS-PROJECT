@@ -1,35 +1,38 @@
-@extends('layouts.user.master')
-
-@section('main-content')
-   <h3>Edit User Information</h3>
-		<form method="post" action="{{ route('user.update',$userProfile->userId) }}">
-			{{ csrf_field() }}
-			 <input type="hidden" name="_method" value="PUT">
+<%include header %>
+<table border="0" align="center">
+	<tr>
+		<td>
+			<h2>Edit Profile Information</h2>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form method="post">
+			<input type="hidden" name="userId" value="<%=user.userId %>">
 				<table>
 					<tr>
-						<td>FULL NAME: </td>
-						<td><input type="text" name="fullname" value="{{ $userProfile->fullname }}"></td>
+						<td>ID :</td>
+						<td><%= user.userId %></td>
 					</tr>
 					<tr>
-						<td>EMAIL: </td>
-						<td><input type="text" name="email" value="{{ $userProfile->email }}"></td>
-					</tr> 
+						<td>USER NAME:</td>
+						<td><input type="text" name="fullname" value="<%= user.fullname %>"></td>
+					</tr>
+						<tr>
+						<td>Email:</td>
+						<td><input type="text" name="email" value="<%= user.email %>"></td>
+					</tr>
 					<tr>
-						<td colspan="2">
-							<br/>
-							<center>
-								<a href="{{ route('user.show',$userProfile->userId) }}">Back</a> | 
-								<input type="submit" value="Update">
-							</center>
-						</td>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Update"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td> <a href="/userHome/Profile"> BACK </a></td>
 					</tr>
 				</table>
 			</form>
-			<br/>
-			<br/>
-			 @if(count($errors) > 0)
-			    @foreach($errors->all() as $error)
-			       <label style="color:red; ">{{ $error }}</label>
-			    @endforeach
-			 @endif
-@endsection
+		</td>
+	</tr>
+</table>

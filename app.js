@@ -11,7 +11,8 @@ var index = require('./controllers/index');
 var login = require('./controllers/login');
 var register = require('./controllers/register');
 var logout = require('./controllers/logout');
-var home = require('./controllers/home');
+var adminHome = require('./controllers/adminHome');
+var userHome = require('./controllers/userHome');
 var userlist = require('./controllers/userlist');
 var events = require('./controllers/events');
 var setting = require('./controllers/setting');
@@ -31,7 +32,8 @@ app.use('/index', index);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/logout', logout);
-app.use('/home', home);
+app.use('/adminHome', adminHome);
+app.use('/userHome', userHome);
 app.use('/userlist', userlist);
 app.use('/events', events);
 app.use('/setting', setting);
@@ -43,6 +45,6 @@ app.get('/', function(req, res){
 });
 
 // SERVER
-app.listen(1337, function(){
+app.listen(3000, function(){
 	console.log('server started ...');
 });
